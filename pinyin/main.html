@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script crossorigin="anonymous"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        .corner-ribbon {
+          width: 200px;
+          background: #e43;
+          position: absolute;
+          top: 25px;
+          left: -50px;
+          text-align: center;
+          line-height: 35px;
+          letter-spacing: 1px;
+          color: #f0f0f0;
+          transform: rotate(-45deg);
+          -webkit-transform: rotate(-45deg);
+        }
+        .corner-ribbon.shadow {
+          box-shadow: 0 0 3px rgba(0,0,0,.3);
+        }
+        .corner-ribbon.top-right {
+          top: 25px;
+          right: -50px;
+          left: auto;
+          transform: rotate(45deg);
+          -webkit-transform: rotate(45deg);
+        }
+    </style>
+
+    <title>Піньїнь Українською</title>
+</head>
+<body>
+
+<div id="app">
+    <div align="center" class="container">
+        <h1 class="mt-5">Піньїнь Українською</h1>
+        <h6 class="m-3">Переклад піньїня українською мовою</h6>
+
+        <form class="bg-light">
+            <div class="form-group p-3">
+                <input class="form-control" id="exampleFormControlTextarea1" name="query_pinyin"
+                       placeholder="Введіть піньїнь або ієрогліфи сюди..." type="text" v-model="query_pinyin">
+            </div>
+            <button @click.prevent="onClick" class="form-group btn btn-primary">Перекласти</button>
+        </form>
+
+        <div class="card mt-3" v-if="result">
+            <h6 class="card-header">Результат:</h6>
+            <div class="card-body">
+                <p class="card-text result_ua">{{ result }}</p>
+                <a @click="doCopy" class="card-link">Скопіювати</a>
+                <a class="card-link" data-toggle="collapse" href="#collapseExample">Показати піньїнь</a>
+            </div>
+            <div class="card-footer text-muted collapse" id="collapseExample">{{ pinyin }}</div>
+        </div>
+    </div>
+</div>
+<div class="corner-ribbon top-right shadow">beta</div>
+<script src="main.js"></script>
+</body>
+</html>
